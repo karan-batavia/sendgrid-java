@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2024-12-12] Version 5.0.0-rc.9
+-------------------------------
+**Library - Chore**
+- [PR #767](https://github.com/sendgrid/sendgrid-java/pull/767): move Bouncy Castle dependency to test scope. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+
 [2024-12-12] Version 5.0.0-rc.8
 -------------------------------
 **Library - Chore**
