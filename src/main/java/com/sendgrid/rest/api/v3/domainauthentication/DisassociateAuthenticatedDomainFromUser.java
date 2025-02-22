@@ -34,7 +34,7 @@ public class DisassociateAuthenticatedDomainFromUser extends ApiKeyBase {
     @Setter
     private String username;
 
-    public ApiResponse<Object> send(final ApiKeyRestClient client) {
+    public ApiResponse<Void> send(final ApiKeyRestClient client) {
         String path = "/v3/whitelabel/domains/subuser";
         Request request = new Request(
             HttpMethod.DELETE,
@@ -64,11 +64,7 @@ public class DisassociateAuthenticatedDomainFromUser extends ApiKeyBase {
             );
         }
         int statusCode = response.getStatusCode();
-        return new ApiResponse(
-            statusCode,
-            JsonUtil.fromJson(response.getStream(), Object.class),
-            response.getHeaders()
-        );
+        return new ApiResponse(statusCode, response.getHeaders());
     }
 
     private void addQueryParams(Request request) {

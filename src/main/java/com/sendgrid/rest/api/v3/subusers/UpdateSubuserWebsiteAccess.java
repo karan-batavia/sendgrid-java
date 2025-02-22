@@ -37,7 +37,7 @@ public class UpdateSubuserWebsiteAccess extends ApiKeyBase {
     @Setter
     private UpdateSubuserWebsiteAccessRequest updateSubuserWebsiteAccessRequest;
 
-    public ApiResponse<Object> send(final ApiKeyRestClient client) {
+    public ApiResponse<Void> send(final ApiKeyRestClient client) {
         String path = "/v3/subusers/{subuser_name}/website_access";
         Request request = new Request(
             HttpMethod.PATCH,
@@ -68,11 +68,7 @@ public class UpdateSubuserWebsiteAccess extends ApiKeyBase {
             );
         }
         int statusCode = response.getStatusCode();
-        return new ApiResponse(
-            statusCode,
-            JsonUtil.fromJson(response.getStream(), Object.class),
-            response.getHeaders()
-        );
+        return new ApiResponse(statusCode, response.getHeaders());
     }
 
     private void addPathParams(Request request) {

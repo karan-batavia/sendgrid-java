@@ -106,6 +106,58 @@ public class ListAccountOffering extends ApiKeyBase {
                 );
             }
 
+            if (Matcher.matches(Integer.toString(statusCode), "500")) {
+                Object error = JsonUtil.fromJson(
+                    response.getStream(),
+                    Object.class
+                );
+                throw new ApiErrorResponse(
+                    statusCode,
+                    null,
+                    error,
+                    response.getHeaders()
+                );
+            }
+
+            if (Matcher.matches(Integer.toString(statusCode), "502")) {
+                Object error = JsonUtil.fromJson(
+                    response.getStream(),
+                    Object.class
+                );
+                throw new ApiErrorResponse(
+                    statusCode,
+                    null,
+                    error,
+                    response.getHeaders()
+                );
+            }
+
+            if (Matcher.matches(Integer.toString(statusCode), "503")) {
+                Object error = JsonUtil.fromJson(
+                    response.getStream(),
+                    Object.class
+                );
+                throw new ApiErrorResponse(
+                    statusCode,
+                    null,
+                    error,
+                    response.getHeaders()
+                );
+            }
+
+            if (Matcher.matches(Integer.toString(statusCode), "504")) {
+                Object error = JsonUtil.fromJson(
+                    response.getStream(),
+                    Object.class
+                );
+                throw new ApiErrorResponse(
+                    statusCode,
+                    null,
+                    error,
+                    response.getHeaders()
+                );
+            }
+
             GenericApiError error = JsonUtil.fromJson(
                 response.getStream(),
                 GenericApiError.class

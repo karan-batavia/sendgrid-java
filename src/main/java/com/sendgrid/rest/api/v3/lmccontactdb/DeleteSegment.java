@@ -41,10 +41,7 @@ public class DeleteSegment extends ApiKeyBase {
     @Setter
     private String onBehalfOf;
 
-    @Setter
-    private Object body;
-
-    public ApiResponse<Object> send(final ApiKeyRestClient client) {
+    public ApiResponse<Void> send(final ApiKeyRestClient client) {
         String path = "/v3/contactdb/segments/{segment_id}";
         Request request = new Request(
             HttpMethod.DELETE,
@@ -54,7 +51,6 @@ public class DeleteSegment extends ApiKeyBase {
         addPathParams(request);
         addQueryParams(request);
         addHeaderParams(request);
-        addBody(request);
         Response response = client.request(request);
 
         if (response == null) {
@@ -116,11 +112,7 @@ public class DeleteSegment extends ApiKeyBase {
             );
         }
         int statusCode = response.getStatusCode();
-        return new ApiResponse(
-            statusCode,
-            JsonUtil.fromJson(response.getStream(), Object.class),
-            response.getHeaders()
-        );
+        return new ApiResponse(statusCode, response.getHeaders());
     }
 
     private void addPathParams(Request request) {
@@ -138,12 +130,6 @@ public class DeleteSegment extends ApiKeyBase {
     private void addQueryParams(Request request) {
         if (deleteContacts != null) {
             request.addQueryParam("delete_contacts", deleteContacts.toString());
-        }
-    }
-
-    private void addBody(final Request request) {
-        if (body != null) {
-            request.addBody(JsonUtil.toJson(body));
         }
     }
 }

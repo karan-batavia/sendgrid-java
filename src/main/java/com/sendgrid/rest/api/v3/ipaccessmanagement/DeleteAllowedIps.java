@@ -40,7 +40,7 @@ public class DeleteAllowedIps extends ApiKeyBase {
     @Setter
     private DeleteAllowedIpsRequest deleteAllowedIpsRequest;
 
-    public ApiResponse<Object> send(final ApiKeyRestClient client) {
+    public ApiResponse<Void> send(final ApiKeyRestClient client) {
         String path = "/v3/access_settings/whitelist";
         Request request = new Request(
             HttpMethod.DELETE,
@@ -123,11 +123,7 @@ public class DeleteAllowedIps extends ApiKeyBase {
             );
         }
         int statusCode = response.getStatusCode();
-        return new ApiResponse(
-            statusCode,
-            JsonUtil.fromJson(response.getStream(), Object.class),
-            response.getHeaders()
-        );
+        return new ApiResponse(statusCode, response.getHeaders());
     }
 
     private void addHeaderParams(Request request) {

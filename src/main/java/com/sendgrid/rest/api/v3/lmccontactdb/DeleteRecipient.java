@@ -38,7 +38,7 @@ public class DeleteRecipient extends ApiKeyBase {
     @Setter
     private String onBehalfOf;
 
-    public ApiResponse<Object> send(final ApiKeyRestClient client) {
+    public ApiResponse<Void> send(final ApiKeyRestClient client) {
         String path = "/v3/contactdb/recipients/{recipient_id}";
         Request request = new Request(
             HttpMethod.DELETE,
@@ -108,11 +108,7 @@ public class DeleteRecipient extends ApiKeyBase {
             );
         }
         int statusCode = response.getStatusCode();
-        return new ApiResponse(
-            statusCode,
-            JsonUtil.fromJson(response.getStream(), Object.class),
-            response.getHeaders()
-        );
+        return new ApiResponse(statusCode, response.getHeaders());
     }
 
     private void addPathParams(Request request) {

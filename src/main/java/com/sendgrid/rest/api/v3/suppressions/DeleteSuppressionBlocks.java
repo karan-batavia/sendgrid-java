@@ -38,7 +38,7 @@ public class DeleteSuppressionBlocks extends ApiKeyBase {
     @Setter
     private DeleteSuppressionBlocksRequest deleteSuppressionBlocksRequest;
 
-    public ApiResponse<Object> send(final ApiKeyRestClient client) {
+    public ApiResponse<Void> send(final ApiKeyRestClient client) {
         String path = "/v3/suppression/blocks";
         Request request = new Request(
             HttpMethod.DELETE,
@@ -69,11 +69,7 @@ public class DeleteSuppressionBlocks extends ApiKeyBase {
             );
         }
         int statusCode = response.getStatusCode();
-        return new ApiResponse(
-            statusCode,
-            JsonUtil.fromJson(response.getStream(), Object.class),
-            response.getHeaders()
-        );
+        return new ApiResponse(statusCode, response.getHeaders());
     }
 
     private void addHeaderParams(Request request) {

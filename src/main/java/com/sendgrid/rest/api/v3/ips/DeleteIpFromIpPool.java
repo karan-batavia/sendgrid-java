@@ -35,7 +35,7 @@ public class DeleteIpFromIpPool extends ApiKeyBase {
     private final String poolName;
     private final String ip;
 
-    public ApiResponse<Object> send(final ApiKeyRestClient client) {
+    public ApiResponse<Void> send(final ApiKeyRestClient client) {
         String path = "/v3/ips/pools/{pool_name}/ips/{ip}";
         Request request = new Request(
             HttpMethod.DELETE,
@@ -78,11 +78,7 @@ public class DeleteIpFromIpPool extends ApiKeyBase {
             );
         }
         int statusCode = response.getStatusCode();
-        return new ApiResponse(
-            statusCode,
-            JsonUtil.fromJson(response.getStream(), Object.class),
-            response.getHeaders()
-        );
+        return new ApiResponse(statusCode, response.getHeaders());
     }
 
     private void addPathParams(Request request) {

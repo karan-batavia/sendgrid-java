@@ -39,10 +39,7 @@ public class DeleteRecipientFromContactDbList extends ApiKeyBase {
     @Setter
     private String onBehalfOf;
 
-    @Setter
-    private Object body;
-
-    public ApiResponse<Object> send(final ApiKeyRestClient client) {
+    public ApiResponse<Void> send(final ApiKeyRestClient client) {
         String path = "/v3/contactdb/lists/{list_id}/recipients/{recipient_id}";
         Request request = new Request(
             HttpMethod.DELETE,
@@ -51,7 +48,6 @@ public class DeleteRecipientFromContactDbList extends ApiKeyBase {
         );
         addPathParams(request);
         addHeaderParams(request);
-        addBody(request);
         Response response = client.request(request);
 
         if (response == null) {
@@ -113,11 +109,7 @@ public class DeleteRecipientFromContactDbList extends ApiKeyBase {
             );
         }
         int statusCode = response.getStatusCode();
-        return new ApiResponse(
-            statusCode,
-            JsonUtil.fromJson(response.getStream(), Object.class),
-            response.getHeaders()
-        );
+        return new ApiResponse(statusCode, response.getHeaders());
     }
 
     private void addPathParams(Request request) {
@@ -132,12 +124,6 @@ public class DeleteRecipientFromContactDbList extends ApiKeyBase {
     private void addHeaderParams(Request request) {
         if (onBehalfOf != null) {
             request.addHeaderParam("on-behalf-of", onBehalfOf.toString());
-        }
-    }
-
-    private void addBody(final Request request) {
-        if (body != null) {
-            request.addBody(JsonUtil.toJson(body));
         }
     }
 }

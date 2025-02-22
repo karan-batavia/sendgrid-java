@@ -29,34 +29,21 @@ public class AccountProvisioningPagination {
     @Setter
     private String last;
 
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    @JsonProperty("example")
-    @Getter
-    @Setter
-    private Object example;
-
     public AccountProvisioningPagination() {}
 
     private AccountProvisioningPagination(Builder builder) {
         this.last = builder.last;
-        this.example = builder.example;
     }
 
     // Builder class for constructing object
     public static class Builder {
 
         private String last;
-        private Object example;
 
         public Builder() {}
 
         public Builder last(String last) {
             this.last = last;
-            return this;
-        }
-
-        public Builder example(Object example) {
-            this.example = example;
             return this;
         }
 
@@ -73,7 +60,6 @@ public class AccountProvisioningPagination {
             ")"
         );
         if (last != null) joiner.add("last=" + last);
-        if (example != null) joiner.add("example=" + example);
         return joiner.toString();
     }
 }

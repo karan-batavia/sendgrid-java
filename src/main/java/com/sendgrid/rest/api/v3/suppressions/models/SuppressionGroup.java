@@ -43,12 +43,6 @@ public class SuppressionGroup {
     private String description;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    @JsonProperty("last_email_sent_at")
-    @Getter
-    @Setter
-    private Integer lastEmailSentAt;
-
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     @JsonProperty("is_default")
     @Getter
     @Setter
@@ -66,7 +60,6 @@ public class SuppressionGroup {
         this.id = builder.id;
         this.name = builder.name;
         this.description = builder.description;
-        this.lastEmailSentAt = builder.lastEmailSentAt;
         this.isDefault = builder.isDefault;
         this.unsubscribes = builder.unsubscribes;
     }
@@ -77,7 +70,6 @@ public class SuppressionGroup {
         private BigDecimal id;
         private String name;
         private String description;
-        private Integer lastEmailSentAt;
         private Boolean isDefault;
         private Integer unsubscribes;
 
@@ -85,11 +77,6 @@ public class SuppressionGroup {
             this.id = id;
             this.name = name;
             this.description = description;
-        }
-
-        public Builder lastEmailSentAt(Integer lastEmailSentAt) {
-            this.lastEmailSentAt = lastEmailSentAt;
-            return this;
         }
 
         public Builder isDefault(Boolean isDefault) {
@@ -117,9 +104,6 @@ public class SuppressionGroup {
         if (id != null) joiner.add("id=" + id);
         if (name != null) joiner.add("name=" + name);
         if (description != null) joiner.add("description=" + description);
-        if (lastEmailSentAt != null) joiner.add(
-            "lastEmailSentAt=" + lastEmailSentAt
-        );
         if (isDefault != null) joiner.add("isDefault=" + isDefault);
         if (unsubscribes != null) joiner.add("unsubscribes=" + unsubscribes);
         return joiner.toString();

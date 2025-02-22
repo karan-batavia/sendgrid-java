@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2025-02-22] Version 5.0.0-rc.17
+--------------------------------
+**Account provisioning**
+- Update status code for all endpoints within Acorn
+
+
 [2025-02-20] Version 5.0.0-rc.16
 --------------------------------
 **Library - Chore**

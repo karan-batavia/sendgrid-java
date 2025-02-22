@@ -53,12 +53,6 @@ public class GetAsmGroup200Response {
     @Setter
     private Integer unsubscribes;
 
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    @JsonProperty("last_email_sent_at")
-    @Getter
-    @Setter
-    private String lastEmailSentAt;
-
     public GetAsmGroup200Response() {}
 
     private GetAsmGroup200Response(Builder builder) {
@@ -67,7 +61,6 @@ public class GetAsmGroup200Response {
         this.isDefault = builder.isDefault;
         this.id = builder.id;
         this.unsubscribes = builder.unsubscribes;
-        this.lastEmailSentAt = builder.lastEmailSentAt;
     }
 
     // Builder class for constructing object
@@ -78,7 +71,6 @@ public class GetAsmGroup200Response {
         private Boolean isDefault;
         private Integer id;
         private Integer unsubscribes;
-        private String lastEmailSentAt;
 
         public Builder(Integer id) {
             this.id = id;
@@ -104,11 +96,6 @@ public class GetAsmGroup200Response {
             return this;
         }
 
-        public Builder lastEmailSentAt(String lastEmailSentAt) {
-            this.lastEmailSentAt = lastEmailSentAt;
-            return this;
-        }
-
         public GetAsmGroup200Response build() {
             return new GetAsmGroup200Response(this);
         }
@@ -126,9 +113,6 @@ public class GetAsmGroup200Response {
         if (isDefault != null) joiner.add("isDefault=" + isDefault);
         if (id != null) joiner.add("id=" + id);
         if (unsubscribes != null) joiner.add("unsubscribes=" + unsubscribes);
-        if (lastEmailSentAt != null) joiner.add(
-            "lastEmailSentAt=" + lastEmailSentAt
-        );
         return joiner.toString();
     }
 }
